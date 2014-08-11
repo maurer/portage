@@ -1,0 +1,10 @@
+--- rxvt-unicode-9.20/src/init.C        2013-12-10 14:46:53.000000000 -0500
++++ rxvt-unicode-9.20-patched/src/init.C        2014-08-11 01:48:40.891604540 -0400
+@@ -1642,6 +1642,7 @@
+   signal (SIGCHLD, SIG_DFL);
+   signal (SIGHUP,  SIG_DFL);
+   signal (SIGPIPE, SIG_DFL);
++  signal (SIGFPE,  SIG_DFL);
+   /*
+    * mimic login's behavior by disabling the job control signals
+    * a shell that wants them can turn them back on
