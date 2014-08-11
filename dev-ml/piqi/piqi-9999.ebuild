@@ -18,6 +18,14 @@ src_configure() {
 
 src_compile() {
   emake -j1
+  emake -j1 ocaml
+}
+
+src_install() {
+  default
+  libdir=`ocamlc -where`
+  dodir ${libdir}
+  emake OCAMLFIND_DESTDIR="${D}${libdir}" ocaml-install
 }
 
 inherit git-r3
