@@ -16,6 +16,5 @@ inherit git-r3
 
 src_install() {
   libdir=`ocamlc -where`
-  dodir ${libdir}/caml
   emake OCAMLFIND_DESTDIR="${D}${libdir}" install
 }
