@@ -13,7 +13,7 @@ DEPEND=">=dev-lang/ocaml-4.01.0[ocamlopt] >=dev-ml/xmlm-1.1.1 >=dev-ml/ulex-1.1 
 RDEPEND="${DEPEND}"
 
 src_configure() {
-  ./configure --prefix=${EPREFIX}
+  ./configure --prefix=${EPREFIX}/usr
 }
 
 src_compile() {
