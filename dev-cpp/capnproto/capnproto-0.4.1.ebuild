@@ -1,8 +1,14 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
 EAPI=5
+
+inherit eutils autotools-multilib
 
 DESCRIPTION="RPC/Serialization system with capabilities support"
 HOMEPAGE="http://capnproto.org"
-SRC_URI="https://capnproto.org/capnproto-c++-0.4.1.tar.gz"
+SRC_URI="https://capnproto.org/${PN}-c++-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -12,13 +18,8 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-inherit eutils autotools-multilib
-
-src_unpack() {
-  default
-  mv ${WORKDIR}/${PN}-c++-${PV} ${WORKDIR}/${P}
-}
+S=${WORKDIR}/${PN}-c++-${PV}
 
 src_prepare() {
-  epatch ${FILESDIR}/${PN}-no-ldconfig.patch
+  epatch ${FILESDIR}/${P}-no-ldconfig.patch
 }

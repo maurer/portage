@@ -1,4 +1,10 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
 EAPI=5
+
+inherit eutils autotools-multilib git-r3
 
 DESCRIPTION="RPC/Serialization system with capabilities support"
 HOMEPAGE="http://capnproto.org"
@@ -12,8 +18,6 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-inherit eutils autotools-multilib git-r3
 
 S=${WORKDIR}/${P}/c++
 
