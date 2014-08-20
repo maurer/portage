@@ -22,4 +22,5 @@ S=${WORKDIR}/${PN}-c++-${PV}
 
 src_prepare() {
   epatch ${FILESDIR}/${P}-no-ldconfig.patch
+  epatch_user
 }

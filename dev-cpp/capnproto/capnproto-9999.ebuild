@@ -23,5 +23,6 @@ S=${WORKDIR}/${P}/c++
 
 src_prepare() {
   epatch ${FILESDIR}/${P}-no-ldconfig.patch
+  epatch_user
   eautoreconf
 }
