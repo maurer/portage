@@ -42,7 +42,7 @@ index 5ad329b..0bae72d 100755
 -                subprocess.check_call([os.path.join(visualizer, 'chopdis'), basename], stderr=subprocess.STDOUT)
 +                subprocess.check_call([os.path.join(bindir, 'chopdis'), basename], stderr=subprocess.STDOUT)
 +                ip_addr = subprocess.check_output("ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}'", shell=True).rstrip()
-+                print("http://" + ip_addr + "/decompiler.html?" + basename)
++                print("http://" + ip_addr + "/decompiler.html?bin=" + basename)
          except subprocess.CalledProcessError as e:
                  print(e.output)
                  print('Disassembler error.')
