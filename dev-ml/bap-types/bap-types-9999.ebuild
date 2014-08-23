@@ -2,7 +2,7 @@ EAPI="5"
 
 DESCRIPTION="BAP Core Types"
 HOMEPAGE="http://bap.ece.cmu.edu"
-EGIT_REPO_URI="ssh://maurer@gerrit.aegis.cylab.cmu.edu:29418/bap-types"
+EGIT_REPO_URI="ssh://${BAP_GIT_USER}@gerrit.aegis.cylab.cmu.edu:29418/bap-types"
 LICENSE="BSD3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
