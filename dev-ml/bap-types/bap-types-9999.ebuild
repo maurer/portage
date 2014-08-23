@@ -7,7 +7,7 @@ LICENSE="BSD3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
-DEPEND=">=dev-lang/ocaml-4.01.0[ocamlopt] >=dev-ml/oasis-0.4.4 >=dev-ml/core_kernel-110.01.00 >=dev-ml/zarith-1.2.1"
+DEPEND="dev-ml/piqi dev-ml/piqi-ocaml >=dev-lang/ocaml-4.01.0[ocamlopt] >=dev-ml/oasis-0.4.4 >=dev-ml/core_kernel-110.01.00 >=dev-ml/zarith-1.2.1"
 RDEPEND="${DEPEND}"
 
 inherit oasis git-r3
