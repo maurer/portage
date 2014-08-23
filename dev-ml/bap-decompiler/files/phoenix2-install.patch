@@ -1,26 +1,47 @@
+diff --git a/chopdis b/chopdis
+index d023c13..87d551a 100755
+--- a/chopdis
++++ b/chopdis
+@@ -10,7 +10,7 @@ REMOVE_LINE = -3
+ startDict = {}
+ endList = []
+ 
+-visualizer = os.path.dirname(os.path.realpath(__file__))
++visualizer = '/var/lib/phoenix2/visualizer'
+ datadir = os.path.join(visualizer, "data")
+ 
+ def encode(l):
 diff --git a/phoenix2 b/phoenix2
-index 5ad329b..2641482 100755
+index 5ad329b..68b64cb 100755
 --- a/phoenix2
 +++ b/phoenix2
-@@ -23,7 +23,7 @@ def main():
+@@ -23,7 +23,9 @@ def main():
          binary = args.binary
  
          basename = os.path.basename(binary)
 -        visualizer = os.path.dirname(os.path.realpath(__file__))
-+        visualizer = os.path.dirname('/var/lib/phoenix/visualizer')
++        phoenix_dir = '/var/lib/phoenix'
++        visualizer  = os.path.join(phoenix_dir, 'visualizer')
++        bindir      = os.path.join(phoenix_dir, 'bin')
  
          # prepare directories
          datadir = os.path.join(visualizer, DATAFOLDERNAME)
-@@ -33,7 +33,7 @@ def main():
+@@ -33,7 +35,7 @@ def main():
  
          # run decompiler
          try:
 -                subprocess.check_call(['./bap-types/utils/demo',  '-dir', basedir, binary], stderr=subprocess.STDOUT)
-+                subprocess.check_call(['/var/lib/phoenix/bin/decomp-backend',  '-dir', basedir, binary], stderr=subprocess.STDOUT)
++                subprocess.check_call([os.path.join(bindir, 'decomp-backend'),  '-dir', basedir, binary], stderr=subprocess.STDOUT)
          except subprocess.CalledProcessError as e:
                  print(e.output)
                  print('Decompiler error.')
-@@ -51,39 +51,5 @@ def main():
+@@ -46,44 +48,10 @@ def main():
+                 s = subprocess.check_output(['objdump', '-d', binary], stderr=subprocess.STDOUT)
+                 output.write(s)
+                 output.close()
+-                subprocess.check_call([os.path.join(visualizer, 'chopdis'), basename], stderr=subprocess.STDOUT)
++                subprocess.check_call([os.path.join(bindir, 'chopdis'), basename], stderr=subprocess.STDOUT)
+         except subprocess.CalledProcessError as e:
                  print(e.output)
                  print('Disassembler error.')
                  return
