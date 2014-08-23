@@ -41,7 +41,7 @@ index 5ad329b..0bae72d 100755
                  output.close()
 -                subprocess.check_call([os.path.join(visualizer, 'chopdis'), basename], stderr=subprocess.STDOUT)
 +                subprocess.check_call([os.path.join(bindir, 'chopdis'), basename], stderr=subprocess.STDOUT)
-+                ip_addr = subprocess.call("ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}'", shell=True)
++                ip_addr = subprocess.check_output("ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}'", shell=True)
 +                print("http://" + ip_addr + "/decompiler.html?" + basename)
          except subprocess.CalledProcessError as e:
                  print(e.output)
