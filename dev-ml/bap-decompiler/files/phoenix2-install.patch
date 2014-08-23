@@ -1,0 +1,62 @@
+diff --git a/phoenix2 b/phoenix2
+index 5ad329b..2641482 100755
+--- a/phoenix2
++++ b/phoenix2
+@@ -23,7 +23,7 @@ def main():
+         binary = args.binary
+ 
+         basename = os.path.basename(binary)
+-        visualizer = os.path.dirname(os.path.realpath(__file__))
++        visualizer = os.path.dirname('/var/lib/phoenix/visualizer')
+ 
+         # prepare directories
+         datadir = os.path.join(visualizer, DATAFOLDERNAME)
+@@ -33,7 +33,7 @@ def main():
+ 
+         # run decompiler
+         try:
+-                subprocess.check_call(['./bap-types/utils/demo',  '-dir', basedir, binary], stderr=subprocess.STDOUT)
++                subprocess.check_call(['/var/lib/phoenix/bin/decomp-backend',  '-dir', basedir, binary], stderr=subprocess.STDOUT)
+         except subprocess.CalledProcessError as e:
+                 print(e.output)
+                 print('Decompiler error.')
+@@ -51,39 +51,5 @@ def main():
+                 print(e.output)
+                 print('Disassembler error.')
+                 return
+-
+-
+-        # start http server
+-        try:
+-                os.chdir(visualizer)
+-                os.system('python2 -m SimpleHTTPServer 1>/dev/null 2>/dev/null &')
+-                print('HTTP server started in port 8000.')
+-        except:
+-                print('HTTP server is already running...')
+-
+-        # open url with your favorite browser
+-        url = 'http://0.0.0.0:8000/decompiler.html?bin=%s' % basename
+-        cmdlines = [
+-                # Linux
+-                "xdg-open '%s'",
+-                "chromium-browser '%s'",
+-                "google-chrome '%s'",
+-                # OSX
+-                "open '%s'",
+-        ]
+-        success = False
+-        devnull = open(os.devnull, 'w')
+-        while not success and len(cmdlines):
+-                cmdline = cmdlines.pop(0) % url
+-                print('Trying [%s]... ' % cmdline, end='', file=sys.stderr)
+-                try:
+-                        subprocess.Popen(shlex.split(cmdline), stdout=devnull, stderr=devnull)
+-                        print('Yes.', file=sys.stderr)
+-                        success = True
+-                except OSError as e:
+-                        print('No.', file=sys.stderr)
+-        if not success:
+-                print('%s' % url)
+-
+ if __name__ == "__main__":
+         main()
