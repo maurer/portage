@@ -10,7 +10,7 @@ DESCRIPTION="Debian SBuild"
 HOMEPAGE=""
 SRC_URI="http://ftp.de.debian.org/debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz"
 
-LICENSE="MIT"
+LICENSE="GPL3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
