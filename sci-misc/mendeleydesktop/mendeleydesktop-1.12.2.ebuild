@@ -101,5 +101,5 @@ src_install() {
 
 	# install launch script
 	exeinto /opt/bin
-	doexe "${FILESDIR}"/bin/${PN}
+	doexe "${FILESDIR}"/${PN}
 }
