@@ -1,3 +1,4 @@
+EAPI=5
 inherit eutils findlib
 
 DESCRIPTION="Extra string functions for OCaml. Mainly splitting."
@@ -13,7 +14,8 @@ DEPEND="
   dev-lang/ocaml
   dev-ml/findlib"
 
-export OCAMLFIND_DESTDIR=${D}
+libdir=`ocamlc -where`
+export OCAMLFIND_DESTDIR=${D}${libdir}
 
 src_unpack() {
     if [ "${A}" != "" ]; then
@@ -28,5 +30,6 @@ src_compile() {
 }
 
 src_install() {
+	dodir ${libdir}
 	ocaml setup.ml -install
 }
