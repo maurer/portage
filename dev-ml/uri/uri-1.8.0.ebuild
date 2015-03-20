@@ -18,7 +18,7 @@ DEPEND="
   dev-ml/re2
   dev-ml/sexplib
   dev-ml/stringext
-  dev-ml/type_conv"
+  dev-ml/type-conv"
 
 libdir=`ocamlc -where`
 export OCAMLFIND_DESTDIR=${D}${libdir}
