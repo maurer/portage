@@ -17,7 +17,7 @@ DEPEND="
   dev-ml/findlib
   dev-ml/endian
   dev-ml/sexplib
-  dev-ml/type_conv"
+  dev-ml/type-conv"
 
 src_unpack() {
     if [ "${A}" != "" ]; then
