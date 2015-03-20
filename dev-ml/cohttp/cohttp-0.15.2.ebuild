@@ -35,7 +35,7 @@ src_unpack() {
 }
 
 src_compile() {
-	ocaml setup.ml -configure --enable-lwt --destdir ${D}
+	ocaml setup.ml -configure --enable-lwt --enable-lwt-unix --destdir ${D}
 	ocaml setup.ml -build
 }
 
