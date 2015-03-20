@@ -22,8 +22,7 @@ DEPEND="
   dev-ml/sexplib
   dev-ml/conduit
   dev-ml/stringext
-  dev-ml/base64
-  dev-ml/magic-mime"
+  dev-ml/base64"
 
 libdir=`ocamlc -where`
 export OCAMLFIND_DESTDIR=${D}${libdir}
